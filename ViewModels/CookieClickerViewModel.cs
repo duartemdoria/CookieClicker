@@ -5,6 +5,48 @@ namespace CookieClicker.ViewModels
 {
     public class CookieClickerViewModel : INotifyPropertyChanged
     {
+        private bool _isWhiteUpgradeButtonVisible = true;
+        public bool IsWhiteUpgradeButtonVisible
+        {
+            get => _isWhiteUpgradeButtonVisible;
+            set
+            {
+                if (_isWhiteUpgradeButtonVisible != value)
+                {
+                    _isWhiteUpgradeButtonVisible = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private bool _isRedUpgradeButtonVisible = true;
+        public bool IsRedUpgradeButtonVisible
+        {
+            get => _isRedUpgradeButtonVisible;
+            set
+            {
+                if (_isRedUpgradeButtonVisible != value)
+                {
+                    _isRedUpgradeButtonVisible = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private bool _isRollerUpgradeButtonVisible = true;
+        public bool IsRollerUpgradeButtonVisible
+        {
+            get => _isRollerUpgradeButtonVisible;
+            set
+            {
+                if (_isRollerUpgradeButtonVisible != value)
+                {
+                    _isRollerUpgradeButtonVisible = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         private int _cookieCount;
         public int CookieCount
         {
@@ -140,6 +182,7 @@ namespace CookieClicker.ViewModels
             {
                 CookieCount -= 100;
                 WhiteUpgradeBought = true;
+                IsWhiteUpgradeButtonVisible = false;
                 OnPropertyChanged(nameof(CanBuyWhiteUpgrade));
             }
         }
@@ -151,6 +194,7 @@ namespace CookieClicker.ViewModels
             {
                 CookieCount -= 500;
                 RedUpgradeBought = true;
+                IsRedUpgradeButtonVisible = false;
                 OnPropertyChanged(nameof(CanBuyRedUpgrade));
             }
         }
@@ -162,6 +206,7 @@ namespace CookieClicker.ViewModels
             {
                 CookieCount -= 1000;
                 RollerUpgradeBought = true;
+                IsRollerUpgradeButtonVisible = false;
                 OnPropertyChanged(nameof(CanBuyRollerUpgrade));
             }
         }
