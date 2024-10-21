@@ -19,7 +19,6 @@
                 HeightRequest="250"
                 BorderWidth="2"
                 CornerRadius="125" />
-        <!-- Rounded corners for a circular look -->
 
         <!-- Larger Cookie Count Label -->
         <Label Text="{Binding CookieCount}"
@@ -28,21 +27,91 @@
                HorizontalOptions="Center"
                Margin="0,20,0,0"
                FontAttributes="Bold" />
-        <!-- Bold for emphasis -->
 
-        <!-- Larger Upgrade Button -->
-        <Button x:Name="UpgradeBtn"
-                Text="Comprar Avó (10 cookies)"
+        <Grid Padding="20,50" RowSpacing="30" ColumnSpacing="10">
+
+            <!-- First row for 3 new upgrade buttons in a row -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- White Cursor -->
+            <Button 
+            Grid.Row="0" Grid.Column="0"
+            ImageSource="whitecursor.png"
+            BackgroundColor="Goldenrod"
+            CornerRadius="10"
+            HorizontalOptions="Fill"
+            HeightRequest="60"
+            WidthRequest="60"
+            Clicked="BuyWhite_Clicked"
+            IsEnabled="{Binding CanBuyWhiteUpgrade}" />
+
+            <!-- Red Cursor -->
+            <Button 
+            Grid.Row="0" Grid.Column="1"
+            ImageSource="redcursor.png"
+            BackgroundColor="Goldenrod"
+            CornerRadius="10"
+            HorizontalOptions="Fill"
+            HeightRequest="60"
+            WidthRequest="60"
+            Clicked="BuyRed_Clicked"
+            IsEnabled="{Binding CanBuyRedUpgrade}" />
+
+            <!-- New Upgrade 3: ??? -->
+            <Button 
+            Grid.Row="0" Grid.Column="2"
+            ImageSource="roller.png"
+            BackgroundColor="Goldenrod"
+            CornerRadius="10"
+            HorizontalOptions="Fill"
+            HeightRequest="60"
+            WidthRequest="60"
+            Clicked="BuyRoller_Clicked"
+            IsEnabled="{Binding CanBuyRollerUpgrade}" />
+
+            <!-- Second row for vertically stacked upgrades -->
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Spacing="20" VerticalOptions="Start">
+
+                <!-- Upgrade Clicker Button (Clicker First) -->
+                <Button 
+                Text="Comprar Cursor (15 cookies)"
                 FontSize="24"
                 BackgroundColor="Goldenrod"
                 TextColor="White"
                 Padding="15,10"
                 CornerRadius="10"
-                SemanticProperties.Hint="Increases click power"
+                SemanticProperties.Hint="Cada Cursor produz 1a bolacha por cada 10 segundos"
+                HorizontalOptions="Fill"
+                HeightRequest="60"
+                Clicked="BuyClickerButton_Clicked"
+                IsEnabled="{Binding CanBuyClicker}" />
+
+                <!-- Upgrade Nanny Button (Nanny Second) -->
+                <Button 
+                Text="Comprar Avó (100 cookies)"
+                FontSize="24"
+                BackgroundColor="Goldenrod"
+                TextColor="White"
+                Padding="15,10"
+                CornerRadius="10"
+                SemanticProperties.Hint="Cada Avó produz 1a bolacha por 1 segundo"
                 HorizontalOptions="Fill"
                 HeightRequest="60"
                 Clicked="BuyAvoButton_Clicked"
                 IsEnabled="{Binding CanBuyAvo}" />
+
+            </StackLayout>
+
+        </Grid>
 
     </StackLayout>
 
