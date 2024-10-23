@@ -52,7 +52,7 @@
                     WidthRequest="60"
                     Clicked="BuyWhite_Clicked"
                     IsEnabled="{Binding CanBuyWhiteUpgrade}" 
-                    IsVisible="{Binding IsWhiteUpgradeButtonVisible}" />
+                    Opacity="{Binding WhiteUpgradeOpacity}" />
 
             <!-- Red Cursor -->
             <Button Grid.Row="0" Grid.Column="1"
@@ -64,7 +64,7 @@
                     WidthRequest="60"
                     Clicked="BuyRed_Clicked"
                     IsEnabled="{Binding CanBuyRedUpgrade}" 
-                    IsVisible="{Binding IsRedUpgradeButtonVisible}" />
+                    Opacity="{Binding RedUpgradeOpacity}" />
 
             <!-- Roller -->
             <Button Grid.Row="0" Grid.Column="2"
@@ -76,7 +76,7 @@
                     WidthRequest="60"
                     Clicked="BuyRoller_Clicked"
                     IsEnabled="{Binding CanBuyRollerUpgrade}" 
-                    IsVisible="{Binding IsRollerUpgradeButtonVisible}" />
+                    Opacity="{Binding RollerUpgradeOpacity}" />
 
             <!-- Second row for vertically stacked upgrades -->
             <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Spacing="20" VerticalOptions="Start">

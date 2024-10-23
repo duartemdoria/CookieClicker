@@ -5,43 +5,50 @@ namespace CookieClicker.ViewModels
 {
     public class CookieClickerViewModel : INotifyPropertyChanged
     {
-        private bool _isWhiteUpgradeButtonVisible = true;
-        public bool IsWhiteUpgradeButtonVisible
+        public CookieClickerViewModel()
         {
-            get => _isWhiteUpgradeButtonVisible;
+            WhiteUpgradeOpacity = 1;
+            RedUpgradeOpacity = 1;
+            RollerUpgradeOpacity = 1;
+        }
+
+        private double _whiteUpgradeOpacity;
+        public double WhiteUpgradeOpacity
+        {
+            get => _whiteUpgradeOpacity;
             set
             {
-                if (_isWhiteUpgradeButtonVisible != value)
+                if (_whiteUpgradeOpacity != value)
                 {
-                    _isWhiteUpgradeButtonVisible = value;
+                    _whiteUpgradeOpacity = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        private bool _isRedUpgradeButtonVisible = true;
-        public bool IsRedUpgradeButtonVisible
+        private double _redUpgradeOpacity;
+        public double RedUpgradeOpacity
         {
-            get => _isRedUpgradeButtonVisible;
+            get => _redUpgradeOpacity;
             set
             {
-                if (_isRedUpgradeButtonVisible != value)
+                if (_redUpgradeOpacity != value)
                 {
-                    _isRedUpgradeButtonVisible = value;
+                    _redUpgradeOpacity = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        private bool _isRollerUpgradeButtonVisible = true;
-        public bool IsRollerUpgradeButtonVisible
+        private double _rollerUpgradeOpacity;
+        public double RollerUpgradeOpacity
         {
-            get => _isRollerUpgradeButtonVisible;
+            get => _rollerUpgradeOpacity;
             set
             {
-                if (_isRollerUpgradeButtonVisible != value)
+                if (_rollerUpgradeOpacity != value)
                 {
-                    _isRollerUpgradeButtonVisible = value;
+                    _rollerUpgradeOpacity = value;
                     OnPropertyChanged();
                 }
             }
@@ -182,7 +189,7 @@ namespace CookieClicker.ViewModels
             {
                 CookieCount -= 100;
                 WhiteUpgradeBought = true;
-                IsWhiteUpgradeButtonVisible = false;
+                WhiteUpgradeOpacity = 0;
                 OnPropertyChanged(nameof(CanBuyWhiteUpgrade));
             }
         }
@@ -194,7 +201,7 @@ namespace CookieClicker.ViewModels
             {
                 CookieCount -= 500;
                 RedUpgradeBought = true;
-                IsRedUpgradeButtonVisible = false;
+                RedUpgradeOpacity = 0;
                 OnPropertyChanged(nameof(CanBuyRedUpgrade));
             }
         }
@@ -206,7 +213,7 @@ namespace CookieClicker.ViewModels
             {
                 CookieCount -= 1000;
                 RollerUpgradeBought = true;
-                IsRollerUpgradeButtonVisible = false;
+                RollerUpgradeOpacity = 0;
                 OnPropertyChanged(nameof(CanBuyRollerUpgrade));
             }
         }
