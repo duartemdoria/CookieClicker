@@ -10,6 +10,36 @@ namespace CookieClicker.ViewModels
             WhiteUpgradeOpacity = 1;
             RedUpgradeOpacity = 1;
             RollerUpgradeOpacity = 1;
+            ClickerCost = 15;
+            GrandmaCost = 100;
+        }
+
+        private int _clickerCost;
+        public int ClickerCost
+        {
+            get => _clickerCost;
+            set
+            {
+                if (_clickerCost != value)
+                {
+                    _clickerCost = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private int _grandmaCost;
+        public int GrandmaCost
+        {
+            get => _grandmaCost;
+            set
+            {
+                if (_grandmaCost != value)
+                {
+                    _grandmaCost = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         private double _whiteUpgradeOpacity;
@@ -69,6 +99,8 @@ namespace CookieClicker.ViewModels
                     OnPropertyChanged(nameof(CanBuyWhiteUpgrade));
                     OnPropertyChanged(nameof(CanBuyRedUpgrade));
                     OnPropertyChanged(nameof(CanBuyRollerUpgrade));
+                    OnPropertyChanged(nameof(ClickerProgress));
+                    OnPropertyChanged(nameof(AvoProgress));
                 }
             }
         }
@@ -143,11 +175,11 @@ namespace CookieClicker.ViewModels
             }
         }
 
-        // Property to control if the user can buy the nanny 
-        public bool CanBuyAvo => CookieCount >= 100;
+        // Property to control if the user can buy the clicker (now dynamic based on _clickerCost)
+        public bool CanBuyClicker => CookieCount >= _clickerCost;
 
-        // Property to control if the user can buy the clicker 
-        public bool CanBuyClicker => CookieCount >= 15;
+        // Property to control if the user can buy the nanny (now dynamic based on _grandmaCost)
+        public bool CanBuyAvo => CookieCount >= _grandmaCost;
 
         // Property to control if the user can buy the white upgrade
         public bool CanBuyWhiteUpgrade => CookieCount >= 100 && !WhiteUpgradeBought;
@@ -158,14 +190,25 @@ namespace CookieClicker.ViewModels
         // Property to control if the user can buy the roller upgrade
         public bool CanBuyRollerUpgrade => CookieCount >= 1000 && !RollerUpgradeBought;
 
+        // Progress bars
+        public double ClickerProgress => (double)CookieCount / _clickerCost;
+        public double AvoProgress => (double)CookieCount / _grandmaCost;
+
+        
+
         // Method to buy the nanny 
         public void BuyAvo()
         {
-            if (CookieCount >= 100)
+            if (CookieCount >= _grandmaCost)  
             {
-                CookieCount -= 100;
+                CookieCount -= _grandmaCost; 
                 AvoCount++;
+                _grandmaCost += 15;  
+
+                // Notify changes
                 OnPropertyChanged(nameof(CanBuyAvo));
+                OnPropertyChanged(nameof(AvoProgress));  
+                OnPropertyChanged(nameof(GrandmaCost));  
                 StartAvoTimer();
             }
         }
@@ -173,11 +216,16 @@ namespace CookieClicker.ViewModels
         // Method to buy the clicker 
         public void BuyClicker()
         {
-            if (CookieCount >= 15)
+            if (CookieCount >= _clickerCost) 
             {
-                CookieCount -= 15;
+                CookieCount -= _clickerCost;  
                 ClickerCount++;
+                _clickerCost += 5;  
+
+                // Notify changes
                 OnPropertyChanged(nameof(CanBuyClicker));
+                OnPropertyChanged(nameof(ClickerProgress));  
+                OnPropertyChanged(nameof(ClickerCost));      
                 StartClickerTimer();
             }
         }

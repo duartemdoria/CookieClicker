@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookieClicker.MainPage"
              xmlns:local="clr-namespace:CookieClicker.ViewModels">
@@ -8,10 +8,21 @@
         <local:CookieClickerViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0,50" Spacing="40"  BackgroundColor="#f9f6f2">
+    <Grid BackgroundColor="#f9f6f2" Padding="50,50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
         <!-- Enlarged Cookie Button -->
         <Button x:Name="CookieButton"
+                Grid.Row="0"
+                Grid.Column="0"
                 Clicked="CookieButton_Clicked"
                 BackgroundColor="Transparent"
                 ImageSource="cookie.png"
@@ -26,14 +37,16 @@
         </Button>
 
         <!-- Larger Cookie Count Label -->
-        <Label Text="{Binding CookieCount}"
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Text="{Binding CookieCount}"
                FontSize="64"
                TextColor="#8B4513"
                HorizontalOptions="Center"
                FontAttributes="Bold"
                Margin="0,20,0,0"/>
 
-        <Grid Padding="20,50" RowSpacing="30" ColumnSpacing="10">
+        <Grid Grid.Row="2" Grid.Column="0" Padding="20,50" RowSpacing="30" ColumnSpacing="10">
 
             <!-- First row for 3 new upgrade buttons in a row -->
             <Grid.RowDefinitions>
@@ -99,7 +112,7 @@
             <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Spacing="20" VerticalOptions="Start">
 
                 <!-- Upgrade Clicker Button (Clicker First) -->
-                <Button Text="Comprar Cursor (15 cookies)"
+                <Button Text="{Binding ClickerCost, StringFormat='Comprar Cursor ({0})'}"
                         FontSize="24"
                         BackgroundColor="Goldenrod"
                         TextColor="White"
@@ -111,8 +124,11 @@
                         Clicked="BuyClickerButton_Clicked"
                         IsEnabled="{Binding CanBuyClicker}" />
 
+                <!-- Progress bar for Clicker -->
+                <ProgressBar Progress="{Binding ClickerProgress}" HeightRequest="10" ProgressColor="#8B4513"/>
+
                 <!-- Upgrade Nanny Button (Nanny Second) -->
-                <Button Text="Comprar Avó (100 cookies)"
+                <Button Text="{Binding GrandmaCost, StringFormat='Comprar Avó ({0})'}"
                         FontSize="24"
                         BackgroundColor="Goldenrod"
                         TextColor="White"
@@ -124,10 +140,13 @@
                         Clicked="BuyAvoButton_Clicked"
                         IsEnabled="{Binding CanBuyAvo}" />
 
+                <!-- Progress bar for Nanny -->
+                <ProgressBar Progress="{Binding AvoProgress}" HeightRequest="10" ProgressColor="#8B4513"/>
+
             </StackLayout>
 
         </Grid>
 
-    </StackLayout>
+    </Grid>
 
 </ContentPage>
