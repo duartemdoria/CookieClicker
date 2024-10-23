@@ -1,152 +1,160 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
  <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CookieClicker.MainPage"
-             xmlns:local="clr-namespace:CookieClicker.ViewModels">
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="CookieClicker.MainPage"
+              xmlns:local="clr-namespace:CookieClicker.ViewModels">
 
-    <ContentPage.BindingContext>
-        <local:CookieClickerViewModel />
-    </ContentPage.BindingContext>
+     <ContentPage.BindingContext>
+         <local:CookieClickerViewModel />
+     </ContentPage.BindingContext>
 
-    <Grid BackgroundColor="#f9f6f2" Padding="50,50">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Grid>
+         <!-- Background Image -->
+         <Image Source="wp.jpg" Aspect="AspectFill" Opacity="0.3" />
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+         <!-- Main Content -->
+         <Grid>
+             <Grid.RowDefinitions>
+                 <RowDefinition Height="Auto" />
+                 <RowDefinition Height="Auto" />
+                 <RowDefinition Height="*" />
+             </Grid.RowDefinitions>
 
-        <!-- Enlarged Cookie Button -->
-        <Button x:Name="CookieButton"
-                Grid.Row="0"
-                Grid.Column="0"
-                Clicked="CookieButton_Clicked"
-                BackgroundColor="Transparent"
-                ImageSource="cookie.png"
-                WidthRequest="250"
-                HeightRequest="250"
-                BorderWidth="4"
-                CornerRadius="125"
-                BorderColor="Goldenrod">
-            <Button.Shadow>
-                <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
-            </Button.Shadow>
-        </Button>
+             <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="*" />
+             </Grid.ColumnDefinitions>
 
-        <!-- Larger Cookie Count Label -->
-        <Label Grid.Row="1"
-               Grid.Column="0"
-               Text="{Binding CookieCount}"
-               FontSize="64"
-               TextColor="#8B4513"
-               HorizontalOptions="Center"
-               FontAttributes="Bold"
-               Margin="0,20,0,0"/>
+             <!-- Enlarged Cookie Button -->
+             <Button x:Name="CookieButton"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Clicked="CookieButton_Clicked"
+                     BackgroundColor="Transparent"
+                     ImageSource="cookie.png"
+                     WidthRequest="250"
+                     HeightRequest="250"
+                     BorderWidth="4"
+                     CornerRadius="125"
+                     BorderColor="Goldenrod"
+                     Margin="0,50,0,0">
+                 <Button.Shadow>
+                     <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
+                 </Button.Shadow>
+             </Button>
 
-        <Grid Grid.Row="2" Grid.Column="0" Padding="20,50" RowSpacing="30" ColumnSpacing="10">
+             <!-- Larger Cookie Count Label -->
+             <Label Grid.Row="1"
+                    Grid.Column="0"
+                    Text="{Binding CookieCount}"
+                    FontSize="64"
+                    TextColor="#8B4513"
+                    HorizontalOptions="Center"
+                    FontAttributes="Bold"
+                    Margin="0,20,0,0"/>
 
-            <!-- First row for 3 new upgrade buttons in a row -->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+             <Grid Grid.Row="2" Grid.Column="0" Padding="20,50" RowSpacing="30" ColumnSpacing="10">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+                 <!-- First row for 3 new upgrade buttons in a row -->
+                 <Grid.RowDefinitions>
+                     <RowDefinition Height="Auto" />
+                     <RowDefinition Height="Auto" />
+                 </Grid.RowDefinitions>
 
-            <!-- White Cursor -->
-            <Button Grid.Row="0" Grid.Column="0"
-                    ImageSource="whitecursor.png"
-                    BackgroundColor="Goldenrod"
-                    CornerRadius="10"
-                    HorizontalOptions="Fill"
-                    HeightRequest="60"
-                    WidthRequest="60"
-                    Clicked="BuyWhite_Clicked"
-                    IsEnabled="{Binding CanBuyWhiteUpgrade}" 
-                    Opacity="{Binding WhiteUpgradeOpacity}" >
-                <Button.Shadow>
-                    <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
-                </Button.Shadow>
-            </Button>
+                 <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*" />
+                     <ColumnDefinition Width="*" />
+                     <ColumnDefinition Width="*" />
+                 </Grid.ColumnDefinitions>
 
-            <!-- Red Cursor -->
-            <Button Grid.Row="0" Grid.Column="1"
-                    ImageSource="redcursor.png"
-                    BackgroundColor="Goldenrod"
-                    CornerRadius="10"
-                    HorizontalOptions="Fill"
-                    HeightRequest="60"
-                    WidthRequest="60"
-                    Clicked="BuyRed_Clicked"
-                    IsEnabled="{Binding CanBuyRedUpgrade}" 
-                    Opacity="{Binding RedUpgradeOpacity}" >
-                <Button.Shadow>
-                    <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
-                </Button.Shadow>
-            </Button>
+                 <!-- White Cursor -->
+                 <Button Grid.Row="0" Grid.Column="0"
+                         ImageSource="whitecursor.png"
+                         BackgroundColor="Goldenrod"
+                         CornerRadius="10"
+                         HorizontalOptions="Fill"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         Clicked="BuyWhite_Clicked"
+                         IsEnabled="{Binding CanBuyWhiteUpgrade}" 
+                         Opacity="{Binding WhiteUpgradeOpacity}" >
+                     <Button.Shadow>
+                         <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
+                     </Button.Shadow>
+                 </Button>
 
-            <!-- Roller -->
-            <Button Grid.Row="0" Grid.Column="2"
-                    ImageSource="roller.png"
-                    BackgroundColor="Goldenrod"
-                    CornerRadius="10"
-                    HorizontalOptions="Fill"
-                    HeightRequest="60"
-                    WidthRequest="60"
-                    Clicked="BuyRoller_Clicked"
-                    IsEnabled="{Binding CanBuyRollerUpgrade}" 
-                    Opacity="{Binding RollerUpgradeOpacity}" >
-                <Button.Shadow>
-                    <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
-                </Button.Shadow>
-            </Button>
+                 <!-- Red Cursor -->
+                 <Button Grid.Row="0" Grid.Column="1"
+                         ImageSource="redcursor.png"
+                         BackgroundColor="Goldenrod"
+                         CornerRadius="10"
+                         HorizontalOptions="Fill"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         Clicked="BuyRed_Clicked"
+                         IsEnabled="{Binding CanBuyRedUpgrade}" 
+                         Opacity="{Binding RedUpgradeOpacity}" >
+                     <Button.Shadow>
+                         <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
+                     </Button.Shadow>
+                 </Button>
 
-            <!-- Second row for vertically stacked upgrades -->
-            <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Spacing="20" VerticalOptions="Start">
+                 <!-- Roller -->
+                 <Button Grid.Row="0" Grid.Column="2"
+                         ImageSource="roller.png"
+                         BackgroundColor="Goldenrod"
+                         CornerRadius="10"
+                         HorizontalOptions="Fill"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         Clicked="BuyRoller_Clicked"
+                         IsEnabled="{Binding CanBuyRollerUpgrade}" 
+                         Opacity="{Binding RollerUpgradeOpacity}" >
+                     <Button.Shadow>
+                         <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
+                     </Button.Shadow>
+                 </Button>
 
-                <!-- Upgrade Clicker Button (Clicker First) -->
-                <Button Text="{Binding ClickerCost, StringFormat='Comprar Cursor ({0})'}"
-                        FontSize="24"
-                        BackgroundColor="Goldenrod"
-                        TextColor="White"
-                        Padding="15,10"
-                        CornerRadius="10"
-                        SemanticProperties.Hint="Cada Cursor produz 1a bolacha por cada 10 segundos"
-                        HorizontalOptions="Fill"
-                        HeightRequest="60"
-                        Clicked="BuyClickerButton_Clicked"
-                        IsEnabled="{Binding CanBuyClicker}" />
+                 <!-- Second row for vertically stacked upgrades -->
+                 <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Spacing="20" VerticalOptions="Start">
 
-                <!-- Progress bar for Clicker -->
-                <ProgressBar Progress="{Binding ClickerProgress}" HeightRequest="10" ProgressColor="#8B4513"/>
+                     <!-- Upgrade Clicker Button (Clicker First) -->
+                     <Button Text="{Binding ClickerCost, StringFormat='Comprar Cursor ({0})'}"
+                             FontSize="24"
+                             BackgroundColor="Goldenrod"
+                             TextColor="White"
+                             Padding="15,10"
+                             CornerRadius="10"
+                             SemanticProperties.Hint="Cada Cursor produz 1a bolacha por cada 10 segundos"
+                             HorizontalOptions="Fill"
+                             HeightRequest="60"
+                             Clicked="BuyClickerButton_Clicked"
+                             IsEnabled="{Binding CanBuyClicker}" />
 
-                <!-- Upgrade Nanny Button (Nanny Second) -->
-                <Button Text="{Binding GrandmaCost, StringFormat='Comprar Avó ({0})'}"
-                        FontSize="24"
-                        BackgroundColor="Goldenrod"
-                        TextColor="White"
-                        Padding="15,10"
-                        CornerRadius="10"
-                        SemanticProperties.Hint="Cada Avó produz 1a bolacha por 1 segundo"
-                        HorizontalOptions="Fill"
-                        HeightRequest="60"
-                        Clicked="BuyAvoButton_Clicked"
-                        IsEnabled="{Binding CanBuyAvo}" />
+                     <!-- Progress bar for Clicker -->
+                     <ProgressBar Progress="{Binding ClickerProgress}" HeightRequest="10" ProgressColor="#8B4513"/>
 
-                <!-- Progress bar for Nanny -->
-                <ProgressBar Progress="{Binding AvoProgress}" HeightRequest="10" ProgressColor="#8B4513"/>
+                     <!-- Upgrade Nanny Button (Nanny Second) -->
+                     <Button Text="{Binding GrandmaCost, StringFormat='Comprar Avó ({0})'}"
+                             FontSize="24"
+                             BackgroundColor="Goldenrod"
+                             TextColor="White"
+                             Padding="15,10"
+                             CornerRadius="10"
+                             SemanticProperties.Hint="Cada Avó produz 1a bolacha por 1 segundo"
+                             HorizontalOptions="Fill"
+                             HeightRequest="60"
+                             Clicked="BuyAvoButton_Clicked"
+                             IsEnabled="{Binding CanBuyAvo}" />
 
-            </StackLayout>
+                     <!-- Progress bar for Nanny -->
+                     <ProgressBar Progress="{Binding AvoProgress}" HeightRequest="10" ProgressColor="#8B4513"/>
 
-        </Grid>
+                 </StackLayout>
 
-    </Grid>
+             </Grid>
 
-</ContentPage>
+         </Grid>
+
+     </Grid>
+
+ </ContentPage>
