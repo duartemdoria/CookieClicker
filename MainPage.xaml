@@ -8,7 +8,7 @@
         <local:CookieClickerViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20,50" Spacing="40">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0,50" Spacing="40"  BackgroundColor="#f9f6f2">
 
         <!-- Enlarged Cookie Button -->
         <Button x:Name="CookieButton"
@@ -17,16 +17,21 @@
                 ImageSource="cookie.png"
                 WidthRequest="250"
                 HeightRequest="250"
-                BorderWidth="2"
-                CornerRadius="125" />
+                BorderWidth="4"
+                CornerRadius="125"
+                BorderColor="Goldenrod">
+            <Button.Shadow>
+                <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
+            </Button.Shadow>
+        </Button>
 
         <!-- Larger Cookie Count Label -->
         <Label Text="{Binding CookieCount}"
-               FontSize="48"
-               TextColor="DarkGoldenrod"
+               FontSize="64"
+               TextColor="#8B4513"
                HorizontalOptions="Center"
-               Margin="0,20,0,0"
-               FontAttributes="Bold" />
+               FontAttributes="Bold"
+               Margin="0,20,0,0"/>
 
         <Grid Padding="20,50" RowSpacing="30" ColumnSpacing="10">
 
@@ -52,7 +57,11 @@
                     WidthRequest="60"
                     Clicked="BuyWhite_Clicked"
                     IsEnabled="{Binding CanBuyWhiteUpgrade}" 
-                    Opacity="{Binding WhiteUpgradeOpacity}" />
+                    Opacity="{Binding WhiteUpgradeOpacity}" >
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
+                </Button.Shadow>
+            </Button>
 
             <!-- Red Cursor -->
             <Button Grid.Row="0" Grid.Column="1"
@@ -64,7 +73,11 @@
                     WidthRequest="60"
                     Clicked="BuyRed_Clicked"
                     IsEnabled="{Binding CanBuyRedUpgrade}" 
-                    Opacity="{Binding RedUpgradeOpacity}" />
+                    Opacity="{Binding RedUpgradeOpacity}" >
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
+                </Button.Shadow>
+            </Button>
 
             <!-- Roller -->
             <Button Grid.Row="0" Grid.Column="2"
@@ -76,7 +89,11 @@
                     WidthRequest="60"
                     Clicked="BuyRoller_Clicked"
                     IsEnabled="{Binding CanBuyRollerUpgrade}" 
-                    Opacity="{Binding RollerUpgradeOpacity}" />
+                    Opacity="{Binding RollerUpgradeOpacity}" >
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Radius="20" Opacity="0.5"/>
+                </Button.Shadow>
+            </Button>
 
             <!-- Second row for vertically stacked upgrades -->
             <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Spacing="20" VerticalOptions="Start">
