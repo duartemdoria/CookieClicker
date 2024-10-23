@@ -1,4 +1,7 @@
 A simple app attempting to replicate Cookie Clicker for learning purposes. 
+APK: https://drive.google.com/file/d/1o5NAgAy6eb1xbSYzFzm58vN0PphhrliN/view?usp=sharing
+
+
 
 Some functionalities achieved include: 
 - Auto-increment of the upgrade cost 
